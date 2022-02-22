@@ -5,7 +5,8 @@ public class Student {
     String stuName;
     String stuEmailId;
     Long stuPhoneNumber;
-    String stuCourse;
+    int stuCourse;
+    int stuSectionId;
 
     public int getStuRollNumber() {
         return stuRollNumber;
@@ -39,11 +40,19 @@ public class Student {
         this.stuPhoneNumber = stuPhoneNumber;
     }
 
-    public String getStuCourse() {
+    public int getStuCourse() {
         return stuCourse;
     }
 
-    public void setStuCourse(String stuCourse) {
+    public void setStuCourse(int stuCourse) {
         this.stuCourse = stuCourse;
+    }
+
+    public int getStuSectionId() {
+        return stuSectionId;
+    }
+
+    public void setStuSectionId(int stuSectionId) {
+        this.stuSectionId = stuSectionId;
     }
 }
