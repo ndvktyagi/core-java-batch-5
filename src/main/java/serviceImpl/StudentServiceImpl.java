@@ -1,17 +1,25 @@
 package serviceImpl;
 
 import beans.Student;
+import entityBeans.StudentEntity;
+import org.apache.commons.beanutils.BeanUtils;
 import repositry.StudentRepositry;
 import repositryImpl.StudentRepositryImpl;
 import service.StudentService;
+
+import java.lang.reflect.InvocationTargetException;
 
 public class StudentServiceImpl implements StudentService {
 
     StudentRepositry studentRepositry = new StudentRepositryImpl();
 
     @Override
-    public String saveStudent(Student student) {
+    public String saveStudent(Student student) throws InvocationTargetException, IllegalAccessException {
         // Calculation
+
+        StudentEntity studentEntity = new StudentEntity();
+        BeanUtils.copyProperties(studentEntity, student);
+
         String result=studentRepositry.saveStudent(student);
         return result;
     }
@@ -29,7 +37,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student getStudentDetails(int stuRollNumber) {
-        return null;
+    public Student getStudentDetails(int stuRollNumber) throws InvocationTargetException, IllegalAccessException {
+        return studentRepositry.getStudentDetails(stuRollNumber);
     }
 }
